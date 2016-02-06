@@ -1,0 +1,30 @@
+{
+  "name": "alexa-plays",
+  "version": "1.0.0",
+  "description": "Procedural Sound Adventure Game ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shetyeshail/AlexaPlays.git"
+  },
+  "keywords": [
+    "Alexa",
+    "Amazon",
+    "Echo",
+    "Sound",
+    "Procedural"
+  ],
+  "author": "TUDev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shetyeshail/AlexaPlays/issues"
+  },
+  "homepage": "https://github.com/shetyeshail/AlexaPlays#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4"
+  }
+}
