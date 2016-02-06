@@ -108,6 +108,11 @@ function TerrainHandler() {
     this.exists = function(x, y) {
 	return (this.grid[x][y] == null) ? false : true;
     }
+
+    //returns the terrain at a given location
+    this.getTerrain = function(x, y) {
+	return (this.isValidSlot(x, y) && this.exists(x, y)) ? this.grid[x][y] : null;
+    }
 }
 
 module.exports = new TerrainHandler();
