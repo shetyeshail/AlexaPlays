@@ -43,7 +43,7 @@ function Player() {
         }
     }
 
-    this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS 
+    this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS
         this.att = pClass.baseStats.att + mods.attack;
         this.hp = pClass.baseStats.hp;
         this.def = pClass.baseStats.def + mods.defense;
