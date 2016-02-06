@@ -28,10 +28,6 @@ var Market = function() {
 	    console.log(this.itemList[i].getName());
 	}
     }
-
-    this.getItemList = function() {
-	return this.itemList;
-    }
 }
 
 module.exports = Market;
