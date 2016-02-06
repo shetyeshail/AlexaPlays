@@ -1,4 +1,6 @@
 
-var Knight = function() {
+function Knight() {
 
 }
+
+module.exports = new Knight();

@@ -1,6 +1,8 @@
 
-var Executioner = function() {
+function Executioner() {
 
 }
+
+module.exports = new Executioner();
 
 

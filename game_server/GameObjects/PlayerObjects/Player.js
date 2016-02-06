@@ -62,7 +62,7 @@ function Player() {
         yCoor:0
     };
 
-    this.pMove(x, y) = function() {
+    this.pMove = function(x, y) {
         //MATH.ABS
         if (Math.abs(x - this.pLocation.xCoor) < 2 && Math.abs(y - this.pLocation.yCoor) < 2){
             this.setPLocation(x, y)
@@ -77,6 +77,7 @@ function Player() {
     this.getPLocation = function() {
         return this.pLocation;
     }
+    
     this.setPLocation = function(x, y) {
         this.pLocation.xCoor = x;
         this.pLocation.yCoor = y;
@@ -85,6 +86,7 @@ function Player() {
     this.getName = function() {
         return this.name;
     }
+    
     this.setName = function(name) {
         this.name = name;
     }
@@ -92,6 +94,11 @@ function Player() {
     //Get class num
     this.getCNum = function() {
         return cNum;
+    }
+
+    //get class
+    this.getClass = function() {
+	return this.pClass;
     }
 
     /*
@@ -106,6 +113,7 @@ function Player() {
     this.getLevel = function() {
         return this.level;
     }
+    
     this.setLevel = function(level) {
         this.level = level;
     }
@@ -113,6 +121,7 @@ function Player() {
     this.getExp = function() {
         return this.exp;
     }
+    
     this.setExp = function(exp){
         this.exp = exp;
     }
@@ -129,6 +138,7 @@ function Player() {
     this.getHp = function() {
         return this.hp;
     }
+    
     this.setHp = function(hp) {
         this.hp = hp
     }
@@ -136,6 +146,7 @@ function Player() {
     this.getDef = function() {
         return this.def;
     }
+    
     this.setDef = function(def) {
         this.def = def;
     }
@@ -143,6 +154,7 @@ function Player() {
     this.getAgi = function() {
         return this.agi;
     }
+    
     this.setAgi = function(agi) {
         this.agi = agi;
     }
@@ -164,6 +176,7 @@ function Player() {
     this.getAcc = function() {
         return this.acc;
     }
+    
     this.setAcc = function(acc) {
         this.acc = acc;
     }
@@ -171,6 +184,7 @@ function Player() {
     this.getConf = function() {
         return this.conf;
     }
+    
     this.setConf = function(conf) {
         this.conf = conf;
     }
