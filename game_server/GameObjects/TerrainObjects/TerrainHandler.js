@@ -27,16 +27,7 @@ function TerrainHandler() {
 	    }
 	}
 
-	//initialize terrains around and on the player position
-	this.setTerrain(this.playerPos.x - 1, this.playerPost.y - 1);  //top left 
-	this.setTerrain(this.playerPos.x, this.playerPost.y - 1);      //top
-	this.setTerrain(this.playerPos.x + 1, this.playerPost.y - 1);  //top right 
-	this.setTerrain(this.playerPos.x - 1, this.playerPost.y);      //left 
-	this.setTerrain(this.playerPos.x, this.playerPost.y);          //center 
-	this.setTerrain(this.playerPos.x + 1, this.playerPost.y);      //right 
-	this.setTerrain(this.playerPos.x - 1, this.playerPost.y + 1);  //bottom left 
-	this.setTerrain(this.playerPos.x, this.playerPost.y + 1);      //bottom
-	this.setTerrain(this.playerPos.x + 1, this.playerPost.y + 1);  //bottom right 
+	this.setLocalTerrians();
     }
 
     //keep track of player position 
@@ -79,6 +70,35 @@ function TerrainHandler() {
 	return false; //FAIL
     }
 
+    //sets up the terrains around the player if needed
+    this.setLocalTerrains = function() {
+	//initialize terrains around and on the player position
+	if(this.isValidSlot(this.playerPos.x - 1, this.playerPos.y - 1) && !this.exists(this.playerPos.x - 1, this.playerPos.y - 1)) {
+	    this.setTerrain(this.playerPos.x - 1, this.playerPos.y - 1);  //top left
+	}
+	if(this.isValidSlot(this.playerPos.x, this.playerPos.y - 1) && !this.exists(this.playerPos.x, this.playerPos.y - 1)) {
+	    this.setTerrain(this.playerPos.x, this.playerPos.y - 1);  //top
+	}
+	if(this.isValidSlot(this.playerPos.x + 1, this.playerPos.y - 1) && !this.exists(this.playerPos.x + 1, this.playerPos.y - 1)) {
+	    this.setTerrain(this.playerPos.x + 1, this.playerPos.y - 1);  //top right
+	}
+	if(this.isValidSlot(this.playerPos.x - 1, this.playerPos.y) && !this.exists(this.playerPos.x - 1, this.playerPos.y)) {
+	    this.setTerrain(this.playerPos.x - 1, this.playerPos.y);  //left
+	}
+	if(this.isValidSlot(this.playerPos.x, this.playerPos.y) && !this.exists(this.playerPos.x, this.playerPos.y)) {
+	    this.setTerrain(this.playerPos.x, this.playerPos.y);  //center
+	}
+	if(this.isValidSlot(this.playerPos.x + 1, this.playerPos.y) && !this.exists(this.playerPos.x + 1, this.playerPos.y)) {
+	    this.setTerrain(this.playerPos.x + 1, this.playerPos.y);  //bottom left
+	}
+	if(this.isValidSlot(this.playerPos.x - 1, this.playerPos.y + 1) && !this.exists(this.playerPos.x - 1, this.playerPos.y + 1)) {
+	    this.setTerrain(this.playerPos.x, this.playerPos.y + 1);  //bottom
+	}
+	if(this.isValidSlot(this.playerPos.x + 1, this.playerPos.y + 1) && !this.exists(this.playerPos.x + 1, this.playerPos.y + 1)) {
+	    this.setTerrain(this.playerPos.x + 1, this.playerPos.y + 1);  //bottom right 
+	}
+    }
+
     //checks to see if the given coordinate is valid within the grid
     this.isValidSlot = function(x, y) {
 	return (x < 0 || y < 0 || x >= this.gridSize || y >= this.gridSize || isNaN(x) || isNaN(y)) ? false : true;
@@ -88,7 +108,6 @@ function TerrainHandler() {
     this.exists = function(x, y) {
 	return (this.grid[x][y] == null) ? false : true;
     }
-    
 }
 
 module.exports = new TerrainHandler();
