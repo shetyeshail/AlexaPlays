@@ -5,6 +5,25 @@
 var Market = function() {
     this.itemList = [];
 
+    this.init = function() {
+	var Potion = require('./Potion.js');
+
+	//initialize a health potion 
+	var hPotion = new Potion();
+	hPotion.init('hp');
+	this.addItem(hPotion);
+
+	//initialize an attack potion
+	var aPotion = new Potion();
+	aPotion.init('att');
+	this.addItem(aPotion);
+
+	//initialize a defense potion
+	var dPotion = new Potion();
+	dPotion.init('def');
+	this.addItem(dPotion);
+    }
+    
     //adds a new item to the shop
     this.addItem = function(newItem) {
 	if(newItem == null) return false;
