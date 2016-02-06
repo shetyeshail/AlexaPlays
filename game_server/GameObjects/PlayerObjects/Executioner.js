@@ -1,0 +1,6 @@
+
+var Executioner = function() {
+
+}
+
+
