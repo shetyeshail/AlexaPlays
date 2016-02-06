@@ -1,6 +1,6 @@
 
 /*
-  The forest object creates a new forest terrain and sets its properties; along with randomly generated NPC 
+  The forest object creates a new forest terrain and sets its properties; along with randomly generated NPC
   units (quest units, monsters, benign units)
 */
 
@@ -9,42 +9,49 @@ var Forest = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-	    "attack": 5,
-	    "defence": 5,
-	    "health": 5
+      "agility": 5,
+      "attack": 0,
+      "conf": 0,
+      "defense": 5
 	},
 	{ //knight
-	    "attack":  4,
-	    "agility": -3
+      "agility": -3,
+      "attack": 4,
+      "conf": 0,
+      "defense": 0
 	},
-	{ //prince 
-	    "attack": 4,
-	    "agility": -3
+	{ //prince
+      "agility": -3,
+      "attack": 4,
+      "conf": 0,
+      "defense": 0
 	},
-	{ //princess 
-	    "attack": 3,
-	    "health": 3,
-	    "defence": -3
+	{ //princess
+      "agility": 0,
+      "attack": 3,
+      "conf": 0,
+      "defense": -3
 	},
-	{ //slave 
-	    "attack": -4,
-	    "agility": 3,
-	    "conf": -4
+	{ //slave
+      "agility": 3,
+      "attack": -4,
+      "conf": -4,
+      "defense": 0
 	},
-	{ //theif 
-	    "defense": 4,
-	    "agility": 4,
-	    "conf": 4,
-	    "attack": -5
+	{ //theif    <-- nice
+      "agility": 4,
+      "attack": -5,
+      "conf": 4,
+      "defense": 4
 	}
     ];
 
-    /*//import the relevant NPC objects 
+    /*//import the relevant NPC objects
     var Oracle = require('../NPCObjects/Oracle.js');
     var TreeEnt = require('../NPCObjects/TreeEnt.js');
     var Spider = require('../NPCObjects/Spider.js');
-    
-    
+
+
     this.description = "A lush, untouched forest filled with various wildlife.";
 
     //initializes the NPCs for the terrain
@@ -61,7 +68,7 @@ var Forest = function() {
 	}
     }*/
 
-    //returns the specific modifiers for the supplied class 
+    //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {
 	return this.modifiers[playerClassNum];
     }
@@ -79,7 +86,7 @@ var Forest = function() {
     this.getType = function() {
 	return this.type;
     }
-    
+
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

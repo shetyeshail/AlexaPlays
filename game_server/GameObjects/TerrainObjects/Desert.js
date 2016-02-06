@@ -1,6 +1,6 @@
 
 /*
-  The desert object creates a new desert terrain and sets its properties; along with randomly generated NPC 
+  The desert object creates a new desert terrain and sets its properties; along with randomly generated NPC
   units (quest units, monsters, benign units)
 */
 
@@ -11,20 +11,25 @@ var Desert = function() {
     this.modifiers = [
 	{ //executioner
 	    "attack": -2
+
+      "agility": 0,
+      "attack": -2,
+      "conf": 0,
+      "defense": 0
 	},
 	{ //knight
 	    "attack":  -2,
 	    "agility": -4
 	},
-	{ //prince 
+	{ //prince
 	    "attack": -2,
 	    "defence": -2
 	},
-	{ //princess 
+	{ //princess
 	    "attack": -2,
 	    "defence": -2
 	},
-	{ //slave 
+	{ //slave
 	    "agility": 3,
 	    "conf": 4
 	},
@@ -34,11 +39,11 @@ var Desert = function() {
 	}
     ];
 
-    /*//import the relevant NPC objects 
+    /*//import the relevant NPC objects
     var Tremor = require('../NPCObjects/Tremor.js');
     var Scorpion = require('../NPCObjects/Scorpion.js');
-    
-    
+
+
     this.description = "A dangerous wasteland filled with decay. There doesn't seem to be much other than heat here.";
 
     //initializes the NPCs for the terrain
@@ -54,7 +59,7 @@ var Desert = function() {
 	}
     }*/
 
-    //returns the specific modifiers for the supplied class 
+    //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {
 	return this.modifiers[playerClassNum];
     }
@@ -62,7 +67,7 @@ var Desert = function() {
     this.getDescription = function() {
 	return this.description;
     }
-	
+
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;
@@ -72,7 +77,7 @@ var Desert = function() {
     this.getType = function() {
 	return this.type;
     }
-    
+
     //the desert will apply damage to characters gradually over time
     this.applyThirst = function() {
 	return this.thirstDamage;

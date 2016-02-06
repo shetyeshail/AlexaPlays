@@ -1,6 +1,6 @@
 
 /*
-  The castle object creates a new castle terrain and sets its properties; along with randomly generated NPC 
+  The castle object creates a new castle terrain and sets its properties; along with randomly generated NPC
   units (quest units, monsters, benign units)
 */
 
@@ -9,37 +9,46 @@ var Castle = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-	    "attack": 3,
-	    "defense": 2,
-	    "conf": 2
+      "agility": 0,
+      "attack": 3,
+	    "conf": 2,
+      "defense": 2
 	},
 	{ //knight
-	    "attack":  5,
 	    "agility": 2,
-	    "defense": 5
+      "attack": 5,
+      "conf": 0,
+      "defense": 5
 	},
 	{ //prince
 	    "agility": 3,
-	    "conf": 5
+      "attack": 0,
+      "conf": 5,
+      "defense": 0
 	},
 	{ //princess
-	    "agility": 3,
-	    "conf": 5
+      "agility": 3,
+      "attack": 0,
+      "conf": 5,
+      "defense": 0
 	},
-	{ //slave 
+	{ //slave
 	    "agility": 5,
-	    "conf": -4
+      "attack": 0,
+      "conf": -4,
+      "defense": 0
 	},
 	{ //theif
 	    "agility": 5,
-	    "attack": 3,
-	    "conf": 3
+      "attack": 3,
+      "conf": 3,
+      "defense": 0
 	}
     ];
 
-    /*//import the relevant NPC objects 
+    /*//import the relevant NPC objects
     var Dragon = require('../NPCObjects/Dragon.js');
-    
+
     this.description = "A beautiful castle looking over all the land. Strangely it seems abandoned... There seem to be scratch marks and embers around...";
 
     //initializes the NPCs for the terrain
@@ -53,7 +62,7 @@ var Castle = function() {
 	}
     }*/
 
-    //returns the specific modifiers for the supplied class 
+    //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {
 	return this.modifiers[playerClassNum];
     }
@@ -66,7 +75,7 @@ var Castle = function() {
     this.getType = function() {
 	return this.type;
     }
-    
+
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;
