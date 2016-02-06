@@ -7,30 +7,30 @@
 var Forest = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
-	"knight": {
-	    "attack":  4,
-	    "agility": -3
-	},
-	"prince": {
-	    "attack": 4,
-	    "agility": -3
-	},
-	"slave": {
-	    "attack": -4,
-	    "agility": 3,
-	    "conf": -4
-	},
-	"princess": {
-	    "attack": 3,
-	    "health": 3,
-	    "defence": -3
-	},
-	"executioner": {
+	{ //executioner
 	    "attack": 5,
 	    "defence": 5,
 	    "health": 5
 	},
-	"theif": {
+	{ //knight
+	    "attack":  4,
+	    "agility": -3
+	},
+	{ //prince 
+	    "attack": 4,
+	    "agility": -3
+	},
+	{ //princess 
+	    "attack": 3,
+	    "health": 3,
+	    "defence": -3
+	},
+	{ //slave 
+	    "attack": -4,
+	    "agility": 3,
+	    "conf": -4
+	},
+	{ //theif 
 	    "defense": 4,
 	    "agility": 4,
 	    "conf": 4,
@@ -56,12 +56,13 @@ var Forest = function() {
 		break;
 	    case 1: NPCList.push(new Spider());
 		break;
+	    }
 	}
     }
 
     //returns the specific modifiers for the supplied class 
-    this.getStatModifiers = function(playerClass) {
-	return this.modifiers.playerClass;
+    this.getStatModifiers = function(playerClassNum) {
+	return this.modifiers[playerClassNum];
     }
 
     this.getDescription = function() {
@@ -71,6 +72,11 @@ var Forest = function() {
     //spawns an oracle in this forest as a response to a quest trigger
     this.spawnOracle = function() {
 	this.NPCList.push(new Oracle());
+    }
+	
+    //gets the npc list for later use
+    this.getNPCList = function() {
+	return this.NPCList;
     }
 }
 
