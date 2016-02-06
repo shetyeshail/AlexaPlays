@@ -5,6 +5,7 @@
 */
 
 var Desert = function() {
+    this.type = "Desert";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.thirstDamage = 2;
     this.modifiers = [
@@ -33,7 +34,7 @@ var Desert = function() {
 	}
     ];
 
-    //import the relevant NPC objects 
+    /*//import the relevant NPC objects 
     var Tremor = require('../NPCObjects/Tremor.js');
     var Scorpion = require('../NPCObjects/Scorpion.js');
     
@@ -51,7 +52,7 @@ var Desert = function() {
 		this.NPCList.push(new Scorpion());
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -67,6 +68,11 @@ var Desert = function() {
 	return this.NPCList;
     }
 
+
+    this.getType = function() {
+	return this.type;
+    }
+    
     //the desert will apply damage to characters gradually over time
     this.applyThirst = function() {
 	return this.thirstDamage;

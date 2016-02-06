@@ -5,11 +5,12 @@
 */
 
 var Castle = function() {
+    this.type = "Castle";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-	    "attack": 3
-	    "defense": 2
+	    "attack": 3,
+	    "defense": 2,
 	    "conf": 2
 	},
 	{ //knight
@@ -30,13 +31,13 @@ var Castle = function() {
 	    "conf": -4
 	},
 	{ //theif
-	    "agility" 5,
+	    "agility": 5,
 	    "attack": 3,
 	    "conf": 3
 	}
     ];
 
-    //import the relevant NPC objects 
+    /*//import the relevant NPC objects 
     var Dragon = require('../NPCObjects/Dragon.js');
     
     this.description = "A beautiful castle looking over all the land. Strangely it seems abandoned... There seem to be scratch marks and embers around...";
@@ -50,7 +51,7 @@ var Castle = function() {
 		this.NPCList.push(new Dragon());
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -60,7 +61,12 @@ var Castle = function() {
     this.getDescription = function() {
 	return this.description;
     }
-	
+
+
+    this.getType = function() {
+	return this.type;
+    }
+    
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

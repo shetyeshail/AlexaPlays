@@ -5,6 +5,7 @@
 */
 
 var Forest = function() {
+    this.type = "Forest";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
@@ -38,7 +39,7 @@ var Forest = function() {
 	}
     ];
 
-    //import the relevant NPC objects 
+    /*//import the relevant NPC objects 
     var Oracle = require('../NPCObjects/Oracle.js');
     var TreeEnt = require('../NPCObjects/TreeEnt.js');
     var Spider = require('../NPCObjects/Spider.js');
@@ -58,7 +59,7 @@ var Forest = function() {
 		break;
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -73,7 +74,12 @@ var Forest = function() {
     this.spawnOracle = function() {
 	this.NPCList.push(new Oracle());
     }
-	
+
+
+    this.getType = function() {
+	return this.type;
+    }
+    
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

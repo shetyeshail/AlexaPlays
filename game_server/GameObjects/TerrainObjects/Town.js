@@ -5,6 +5,7 @@
 */
 
 var Town = function() {
+    this.type = "Town";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
@@ -29,12 +30,12 @@ var Town = function() {
 	    "conf": -5
 	},
 	{ //theif
-	    "agility" -3,
+	    "agility": -3,
 	    "conf": -4
 	}
     ];
 
-    //import the relevant NPC objects 
+    /*//import the relevant NPC objects 
     var Merchant = require('../NPCObjects/Marchant.js');
     var Bandit = require('../NPCObjects/Bandit.js');
     var Villager = require('../NPCObjects/Villager.js');
@@ -54,7 +55,7 @@ var Town = function() {
 		this.NPCList.push(new Bandit());
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -64,7 +65,11 @@ var Town = function() {
     this.getDescription = function() {
 	return this.description;
     }
-	
+    
+    this.getType = function() {
+	return this.type;
+    }
+    
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

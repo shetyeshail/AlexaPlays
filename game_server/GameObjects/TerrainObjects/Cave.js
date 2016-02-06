@@ -5,10 +5,11 @@
 */
 
 var Cave = function() {
+    this.type = "Cave";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-	    "attack": 4
+	    "attack": 4,
 	    "agility": -4,
 	    "conf": -2
 	},
@@ -33,13 +34,13 @@ var Cave = function() {
 	    "conf": 3
 	},
 	{ //theif
-	    "agility" 4,
+	    "agility": 4,
 	    "attack": 1,
 	    "conf": 2
 	}
     ];
 
-    //import the relevant NPC objects 
+    /*//import the relevant NPC objects 
     var SlenderMan = require('../NPCObjects/SlenderMan.js');
     var Goblin = require('../NPCObjects/Goblin.js');
     
@@ -56,7 +57,7 @@ var Cave = function() {
 		this.NPCList.push(new Goblin());
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -66,7 +67,11 @@ var Cave = function() {
     this.getDescription = function() {
 	return this.description;
     }
-	
+    
+    this.getType = function() {
+	return this.type;
+    }
+    
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

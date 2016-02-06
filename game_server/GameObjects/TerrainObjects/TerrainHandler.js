@@ -4,8 +4,8 @@
 */
 
 function TerrainHandler() {
-    this.grid = null;
-    this.gridSize = 100; //good default
+    this.grid = [[], [], [], [], [], [], [], [], [], []];
+    this.gridSize = 10; //good default
     this.playerPos = null;
 
     /*
@@ -37,6 +37,7 @@ function TerrainHandler() {
 		x: x_coor,
 		y: y_coor
 	    }
+	    this.setLocalTerrains();
 	    return true; //SUCCESS
 	}
 	return false; //FAIL
@@ -48,22 +49,22 @@ function TerrainHandler() {
 	    var terrainSelector = Math.floor(Math.random() * 6);
 	    switch(terrainSelector) {
 	    case 0: this.grid[x][y] = new this.Forest();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
       	    case 1: this.grid[x][y] = new this.Cave();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
 	    case 2: this.grid[x][y] = new this.Town();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
 	    case 3: this.grid[x][y] = new this.Desert();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
 	    case 4: this.grid[x][y] = new this.Castle();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
 	    case 5: this.grid[x][y] = new this.Sea();
-		this.grid[x][y].init();
+		//this.grid[x][y].init();
 		break;
 	    }
 	}
@@ -106,12 +107,36 @@ function TerrainHandler() {
 
     //checks to see if this terrain slot has been instantiated
     this.exists = function(x, y) {
-	return (this.grid[x][y] == null) ? false : true;
+	if(this.grid == null) {
+	    return false;
+	} else {
+	    if(this.grid[x] == null) {
+		return false;
+	    } else {
+		if(this.grid[x][y] == null) {
+		    return false;
+		} else {
+		    return true;
+		}
+	    }
+	}
     }
-
+    
     //returns the terrain at a given location
     this.getTerrain = function(x, y) {
 	return (this.isValidSlot(x, y) && this.exists(x, y)) ? this.grid[x][y] : null;
+    }
+
+    //for testing, a function that prints out the grid for viewing
+    this.terrainDump = function() {
+	for(var i = 0; i < 10; i++) {
+	    for(var j = 0; j < 10; j++) {
+		process.stdout.write("[" + this.grid[i][j].getType() + "]");
+		if(j % 10 == 0) {
+		    process.stdout.write("\n");
+		}
+	    }
+	}
     }
 }
 

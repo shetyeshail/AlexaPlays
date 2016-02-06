@@ -44,6 +44,15 @@ function GameHandler() {
 	    Player.updateStats(modifiers);
 	}
     }
+
+    this.terrainTest = function() {
+	for(var i = 0; i < 10; i++) {
+	    for(var j = 0; j < 10; j++) {
+		this.TerrainHandler.setPlayerPosition(i, j);
+	    }
+	}
+	this.TerrainHandler.terrainDump();
+    }
 }
 
 module.exports = new GameHandler();

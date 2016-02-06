@@ -5,6 +5,7 @@
 */
 
 var Sea = function() {
+    this.type = "Sea";
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
@@ -33,14 +34,14 @@ var Sea = function() {
 	    "conf": -3
 	},
 	{ //theif
-	    "agility" -3,
+	    "agility": -3,
 	    "attack": -2,
 	    "conf": -3
 	}
     ];
 
     //import the relevant NPC objects 
-    var SeaDragon = require('../NPCObjects/SeaDragon.js');
+    /*var SeaDragon = require('../NPCObjects/SeaDragon.js');
     
     
     this.description = "A vast expanse of water. Rumors have spoken of the existence of a Sea Dragon. It's probably best for us to get out of here as soon as possible...";
@@ -54,7 +55,7 @@ var Sea = function() {
 		this.NPCList.push(new SeaDragon());
 	    }
 	}
-    }
+    }*/
 
     //returns the specific modifiers for the supplied class 
     this.getStatModifiers = function(playerClassNum) {
@@ -63,6 +64,10 @@ var Sea = function() {
 
     this.getDescription = function() {
 	return this.description;
+    }
+    
+    this.getType = function() {
+	return this.type;
     }
 	
     //gets the npc list for later use
