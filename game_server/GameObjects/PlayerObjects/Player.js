@@ -45,10 +45,10 @@ function Player() {
 
     this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS 
         this.att = pClass.baseStats.att + mods.attack;
-        this.hp = pClass.baseStats.hp + mods.health;
+        this.hp = pClass.baseStats.hp;
         this.def = pClass.baseStats.def + mods.defense;
-        this.agi = pClass.baseStats.agi + mods.Agility;
-        this.conf = pClass.baseStats.conf;
+        this.agi = pClass.baseStats.agi + mods.agility;
+        this.conf = pClass.baseStats.conf + mods.conf;
     }
 
     this.pLocation = {   //Location of player
