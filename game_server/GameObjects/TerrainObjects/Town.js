@@ -34,7 +34,7 @@ var Town = function() {
 	    "conf": -5,
       "defense": 0
 	},
-	{ //theif
+	{ //thief
       "attack": 0,
       "agility": -3,
 	    "conf": -4,

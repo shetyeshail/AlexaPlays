@@ -38,7 +38,7 @@ var Sea = function() {
 	    "conf": -3,
       "defense": 0
 	},
-	{ //theif
+	{ //thief 
 	    "agility": -3,
 	    "attack": -2,
 	    "conf": -3,

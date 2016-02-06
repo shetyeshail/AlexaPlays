@@ -38,7 +38,7 @@ var Cave = function() {
       "conf": 3,
       "defense": 0
 	},
-	{ //theif
+	{ //thief
 	    "agility": 4,
 	    "attack": 1,
 	    "conf": 2,

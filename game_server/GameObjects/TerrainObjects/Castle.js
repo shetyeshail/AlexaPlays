@@ -38,7 +38,7 @@ var Castle = function() {
       "conf": -4,
       "defense": 0
 	},
-	{ //theif
+	{ //thief
 	    "agility": 5,
       "attack": 3,
       "conf": 3,

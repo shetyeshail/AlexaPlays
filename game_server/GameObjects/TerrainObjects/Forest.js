@@ -38,7 +38,7 @@ var Forest = function() {
       "conf": -4,
       "defense": 0
 	},
-	{ //theif    <-- nice
+	{ //thief
       "agility": 4,
       "attack": -5,
       "conf": 4,

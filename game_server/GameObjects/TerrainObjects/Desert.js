@@ -33,7 +33,7 @@ var Desert = function() {
 	    "agility": 3,
 	    "conf": 4
 	},
-	{ //theif
+	{ //thief
 	    "conf": 2,
 	    "attack": 2
 	}
