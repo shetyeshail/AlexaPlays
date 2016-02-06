@@ -1,7 +1,10 @@
 
 // Main player object responsible for handling interactions with and changes with player during gameplay
 function Player() {
+    this.Inventory = require('../ItemObjects/Inventory.js');
+    this.statMultiplier = 10;
 
+    
     // Basic fields
     this.name;
     this.level;
@@ -15,6 +18,10 @@ function Player() {
     this.def;
     this.agi;   // Agility/Evasion
     this.conf;  // Confidence, used for merchant discount
+
+    //potion-boosted stats
+    this.boostedAtt;
+    this.boostedDef;
 
     this.init = function(playerName, c){
         //init type things
@@ -41,14 +48,26 @@ function Player() {
                 break;
             default:
         }
+
+	//set the initial/default stats
+	this.att = pClass.baseStats.att * this.statMultiplier;
+	this.hp = pClass.baseStats.hp * this.statMultiplier;
+	this.def = pClass.baseStats.def * this.statMultiplier;
+	this.agi = pClass.baseStats.agi * this.statMultiplier;
+	this.conf = pClass.baseStats.conf * this.statMultiplier;
+
+	this.boostedAtt = this.att;
+	this.boostedDef = this.def;
+	
+	this.Inventory.init();
     }
 
     this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS 
-        this.att = pClass.baseStats.att + mods.attack;
-        this.hp = pClass.baseStats.hp;
-        this.def = pClass.baseStats.def + mods.defense;
-        this.agi = pClass.baseStats.agi + mods.agility;
-        this.conf = pClass.baseStats.conf + mods.conf;
+        this.att = pClass.baseStats.att  * this.statMultiplier + mods.attack;
+        this.hp = pClass.baseStats.hp  * this.statMultiplier;
+        this.def = pClass.baseStats.def  * this.statMultiplier + mods.defense * this.statMultiplier;
+        this.agi = pClass.baseStats.agi * this.statMultiplier + mods.agility * this.statMultiplier;
+        this.conf = pClass.baseStats.conf * this.statMultiplier + mods.conf * this.statMultiplier;
     }
 
     this.pLocation = {   //Location of player
@@ -153,4 +172,33 @@ function Player() {
         this.conf = conf;
     }
 
+
+    this.pay = function(amount) {
+	this.Inventory.spend(amount);
+    }
+
+    this.acquire = function(item) {
+	if(item != null)
+	    this.Inventory.add(item);
+    }
+
+    this.usePotion = function(type) {
+	this.applyStatBoost(this.Inventory.use(type));
+    }
+
+    this.applyStatBoost = function(stats) {
+	if(stats == null) return;
+	if(this.hp + stats.hp > this.pClass.baseStats.hp) {
+	    this.hp = this.pClass.baseStats.hp * this.statMultiplier;
+	} else {
+	    this.hp = this.hp + (stats.hp * this.statMultiplier);
+	}
+
+	this.boostedAtt = this.att + stats.att * this.statMultiplier;
+	this.boostedDef = this.def + stats.def * this.statMultiplier;
+	if(this.boostedAtt > this.att || this.boostedDef > this.def) {
+	    //if we've used anything other than a health potion we want to apply a time limit
+	    this.potionTime = 10; //ten turns
+	}
+    }
 }
