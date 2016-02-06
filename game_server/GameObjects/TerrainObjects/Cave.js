@@ -1,6 +1,6 @@
 
 /*
-  The cave object creates a new cave terrain and sets its properties; along with randomly generated NPC 
+  The cave object creates a new cave terrain and sets its properties; along with randomly generated NPC
   units (quest units, monsters, benign units)
 */
 
@@ -9,41 +9,47 @@ var Cave = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-	    "attack": 4,
-	    "agility": -4,
-	    "conf": -2
+      "agility": -4,
+      "attack": 4,
+      "conf": -2,
+      "defense": 0
 	},
 	{ //knight
-	    "attack":  3,
-	    "agility": -5,
-	    "defense": 3
+      "agility": -5,
+      "attack": 3,
+      "conf": 0,
+      "defense": 3
 	},
-	{ //prince 
-	    "attack": 1,
-	    "agility": -2,
-	    "conf": -3
+	{ //prince
+      "agility": -2,
+      "attack": 1,
+      "conf": -3,
+      "defense": 0
 	},
-	{ //princess 
-	    "attack": 1,
-	    "agility": -2,
-	    "conf": -3
+	{ //princess
+      "agility": -2,
+      "attack": 1,
+      "conf": -3,
+      "defense": 0
 	},
-	{ //slave 
-	    "agility": 5,
-	    "attack": 1,
-	    "conf": 3
+	{ //slave
+      "agility": 5,
+      "attack": 1,
+      "conf": 3,
+      "defense": 0
 	},
-	{ //theif
+	{ //thief
 	    "agility": 4,
 	    "attack": 1,
-	    "conf": 2
+	    "conf": 2,
+      "defense": 0
 	}
     ];
 
-    /*//import the relevant NPC objects 
+    /*//import the relevant NPC objects
     var SlenderMan = require('../NPCObjects/SlenderMan.js');
     var Goblin = require('../NPCObjects/Goblin.js');
-    
+
     this.description = "A dark cave probably filled with all sorts of treasures; or all sorts of horrors... Only one way to find out!";
 
     //initializes the NPCs for the terrain
@@ -59,7 +65,7 @@ var Cave = function() {
 	}
     }*/
 
-    //returns the specific modifiers for the supplied class 
+    //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {
 	return this.modifiers[playerClassNum];
     }
@@ -67,11 +73,11 @@ var Cave = function() {
     this.getDescription = function() {
 	return this.description;
     }
-    
+
     this.getType = function() {
 	return this.type;
     }
-    
+
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

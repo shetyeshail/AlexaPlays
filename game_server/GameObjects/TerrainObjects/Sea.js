@@ -1,6 +1,6 @@
 
 /*
-  The sea object creates a new sea terrain and sets its properties; along with randomly generated NPC 
+  The sea object creates a new sea terrain and sets its properties; along with randomly generated NPC
   units (quest units, monsters, benign units)
 */
 
@@ -11,39 +11,45 @@ var Sea = function() {
 	{ //executioner
 	    "attack": -2,
 	    "agility": -4,
-	    "conf": -5
+	    "conf": -5,
+      "defense": 0
 	},
 	{ //knight
 	    "attack":  -2,
 	    "agility": -5,
-	    "conf": -5
+	    "conf": -5,
+      "defense": 0
 	},
-	{ //prince 
+	{ //prince
 	    "attack": -2,
 	    "agility": -2,
-	    "conf": -3
+	    "conf": -3,
+      "defense": 0
 	},
-	{ //princess 
+	{ //princess
 	    "attack": -2,
 	    "agility": -2,
-	    "conf": -3
+	    "conf": -3,
+      "defense": 0
 	},
-	{ //slave 
+	{ //slave
 	    "agility": -3,
 	    "attack": -2,
-	    "conf": -3
+	    "conf": -3,
+      "defense": 0
 	},
-	{ //theif
+	{ //thief 
 	    "agility": -3,
 	    "attack": -2,
-	    "conf": -3
+	    "conf": -3,
+      "defense": 0
 	}
     ];
 
-    //import the relevant NPC objects 
+    //import the relevant NPC objects
     /*var SeaDragon = require('../NPCObjects/SeaDragon.js');
-    
-    
+
+
     this.description = "A vast expanse of water. Rumors have spoken of the existence of a Sea Dragon. It's probably best for us to get out of here as soon as possible...";
 
     //initializes the NPCs for the terrain
@@ -57,7 +63,7 @@ var Sea = function() {
 	}
     }*/
 
-    //returns the specific modifiers for the supplied class 
+    //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {
 	return this.modifiers[playerClassNum];
     }
@@ -65,11 +71,11 @@ var Sea = function() {
     this.getDescription = function() {
 	return this.description;
     }
-    
+
     this.getType = function() {
 	return this.type;
     }
-	
+
     //gets the npc list for later use
     this.getNPCList = function() {
 	return this.NPCList;

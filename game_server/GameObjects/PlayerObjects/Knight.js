@@ -8,7 +8,6 @@ function Knight() {
         conf: 10
     }
 
-
     this.levelUp = function(){
         this.baseStats.hp += 5;
         this.baseStats.def += 5;

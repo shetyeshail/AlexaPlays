@@ -4,37 +4,23 @@ function Player() {
 
     // Basic fields
     this.name;
-    //this.stamina
     this.level;
     this.exp;
     this.pClass;
     this.cNum;
-    
-    // Import classes
-    
-    this.Executioner = require('./Executioner.js');
-    this.Knight = require('./Knight.js');
-    this.Prince = require('./Prince.js');    
-    this.Princess = require('./Princess.js');
-    this.Slave = require('./Slave.js');
-    this.Thief = require('./Thief.js');
-    
 
     // Attributes
-    this.att;		  // Used for dmg calculation	
-    this.hp;	
+    this.att;		   // Used for dmg calculation
+    this.hp;
     this.def;
-    this.agi;	  	// Agility/Evasion
-    this.crit;		// Chance to do double dmg 
-    this.luk; 		// Chance to encounter better loot	
-    this.acc;		  // Accuracy affected by enemy moves and darkness
-    this.conf;		// Confidence, used for merchant discount 
+    this.agi;   // Agility/Evasion
+    this.conf;  // Confidence, used for merchant discount
 
     this.init = function(playerName, c){
-        //init type things        
+        //init type things
         this.name = playerName;
-        this.cNum = c;        
-        switch(cNum) {
+        this.cNum = c;
+        switch(cNum) {      //Import class
             case 0:
                 this.pClass = require('./Executioner.js');
                 break;
@@ -57,6 +43,14 @@ function Player() {
         }
     }
 
+    this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS 
+        this.att = pClass.baseStats.att + mods.attack;
+        this.hp = pClass.baseStats.hp;
+        this.def = pClass.baseStats.def + mods.defense;
+        this.agi = pClass.baseStats.agi + mods.agility;
+        this.conf = pClass.baseStats.conf + mods.conf;
+    }
+
     this.pLocation = {   //Location of player
         xCoor:0,
         yCoor:0
@@ -73,11 +67,11 @@ function Player() {
     }
 
 
-    /* Field getters and setters */  
+    /* Field getters and setters */
     this.getPLocation = function() {
         return this.pLocation;
     }
-    
+
     this.setPLocation = function(x, y) {
         this.pLocation.xCoor = x;
         this.pLocation.yCoor = y;
@@ -86,7 +80,7 @@ function Player() {
     this.getName = function() {
         return this.name;
     }
-    
+
     this.setName = function(name) {
         this.name = name;
     }
@@ -101,19 +95,10 @@ function Player() {
 	return this.pClass;
     }
 
-    /*
-    this.getStamina = function() {
-        return this.stamina;
-    }
-    this.setStamina = function(stamina) {
-        this.stamina = stamina;
-    }
-    */
-
     this.getLevel = function() {
         return this.level;
     }
-    
+
     this.setLevel = function(level) {
         this.level = level;
     }
@@ -121,13 +106,13 @@ function Player() {
     this.getExp = function() {
         return this.exp;
     }
-    
+
     this.setExp = function(exp){
         this.exp = exp;
     }
-    
-    // Attribute Getter/Setters  
-    
+
+    // Attribute Getter/Setters
+
     this.getAtt = function() {
         return this.att;
     }
@@ -135,19 +120,19 @@ function Player() {
     this.setAtt = function(att) {
         this.att = att;
     }
-   
+
     this.getHp = function() {
         return this.hp;
     }
-    
+
     this.setHp = function(hp) {
         this.hp = hp
     }
-  
+
     this.getDef = function() {
         return this.def;
     }
-    
+
     this.setDef = function(def) {
         this.def = def;
     }
@@ -155,39 +140,15 @@ function Player() {
     this.getAgi = function() {
         return this.agi;
     }
-    
+
     this.setAgi = function(agi) {
         this.agi = agi;
     }
-   
-    this.getCrit = function() {
-        return this.crit;  
-    }
 
-    this.setCrit = function(crit) {
-        this.crit = crit;
-    }
-
-    this.getLuk = function() {
-        return this.luk;
-    }
-
-    this.setLuk = function(luk) {
-        this.Luk = luk;
-    }
-
-    this.getAcc = function() {
-        return this.acc;
-    }
-    
-    this.setAcc = function(acc) {
-        this.acc = acc;
-    }
-    
     this.getConf = function() {
         return this.conf;
     }
-    
+
     this.setConf = function(conf) {
         this.conf = conf;
     }
