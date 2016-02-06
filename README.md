@@ -6,6 +6,6 @@ Built with <3 by TUDev @ [HopHacks](https://www.hophacks.com)
 ------
 Shail Shetye | 
 Vuk Petrovic | 
-Chethra Yen | 
+Chethtra Yen | 
 Harsh Patel | 
 Tyreak Allen
