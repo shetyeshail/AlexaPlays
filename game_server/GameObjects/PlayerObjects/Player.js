@@ -131,6 +131,7 @@ function Player() {
     this.getAtt = function() {
         return this.att;
     }
+
     this.setAtt = function(att) {
         this.att = att;
     }
@@ -162,6 +163,7 @@ function Player() {
     this.getCrit = function() {
         return this.crit;  
     }
+
     this.setCrit = function(crit) {
         this.crit = crit;
     }
@@ -169,6 +171,7 @@ function Player() {
     this.getLuk = function() {
         return this.luk;
     }
+
     this.setLuk = function(luk) {
         this.Luk = luk;
     }
