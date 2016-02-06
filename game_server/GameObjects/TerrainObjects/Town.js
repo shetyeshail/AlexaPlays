@@ -43,7 +43,7 @@ var Town = function() {
 	}
     ];
 
-    /*//import the relevant NPC objects
+    //import the relevant NPC objects
     var Merchant = require('../NPCObjects/Marchant.js');
     var Bandit = require('../NPCObjects/Bandit.js');
     var Villager = require('../NPCObjects/Villager.js');
@@ -55,15 +55,15 @@ var Town = function() {
 	var num_npcs = Math.floor(Math.random() * 10);
 	for(var i = 0; i < num_npcs; i++) {
 	    var type = Math.floor(Math.random() * 10);
-	    if(type < 4) {
+	    if(type < 6) {
 		this.NPCList.push(new Villager());
-	    } else if(type >= 4 && type < 7) {
+	    } else if(type == 6) {
 		this.NPCList.push(new Merchant());
 	    } else {
 		this.NPCList.push(new Bandit());
 	    }
 	}
-    }*/
+    }
 
     //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {

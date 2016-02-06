@@ -8,7 +8,8 @@
 function GameHandler() {
     this.TerrainHandler = require('./TerrainObjects/TerrainHandler.js');
     this.Player = require('./PlayerObjects/Player.js');
-
+    this.currentMerch;
+    
     //initializes, well, everything; cNum is the given class number
     this.init = function(playerName, cNum) {
 	//Initialize player stats to the defaults 
@@ -44,7 +45,30 @@ function GameHandler() {
 	    Player.updateStats(modifiers);
 	}
     }
+    
+    //each town terrain will only have one merchant
+    this.setCurrentMerchant = function() {
+	var npcList = this.TerrainHandler.getTerrain(this.Player.getPLocation.xCoor,
+						     this.Player.getPLocation.yCoor).getNPCList();
+	for(var i = 0; i < npcList.length; i++) {
+	    if(npcList[i].type == "merchant") {
+		this.currentMerch = npcList[i];
+	    }
+	}
+    }
 
+    //the entire procedure to purchase from a shop 
+    this.handlePurchase = function(itemToPurchase) {
+	var Market = this.currentMerch.getMarket();
+	var itemList  = Market.getItemList();
+	for(var i = 0; i < itemList.length; i++) {
+	    if(itemList[i].getName == itemToPurchase) {
+		this.Player.pay(itemList[i].getInfo().cost);
+		this.Player.acquire(itemList[i]);
+	    }
+	}
+    }
+    
     this.terrainTest = function() {
 	for(var i = 0; i < 10; i++) {
 	    for(var j = 0; j < 10; j++) {
