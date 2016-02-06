@@ -4,8 +4,11 @@
   between the user and game environment; as well as communicartion between other game objects.
 */
 
+
 function GameHandler() {
-    
+    this.init = function() {
+	
+    }
 }
 
 module.exports = new GameHandler();
