@@ -7,6 +7,7 @@
 function GameHandler() {
     this.TerrainHandler = require('./TerrainObjects/TerrainHandler.js');
     this.Player = require('./PlayerObjects/Player.js');
+    this.CombatHandler = require('./CombatHandler.js');
     this.currentMerch;
     
     //initializes, well, everything; cNum is the given class number
@@ -83,8 +84,49 @@ function GameHandler() {
 		    }
 		}
 	    } else {
-		
+		return this.TerrainHandler.getSurroundingTerrains();
 	    }
+	case "attack":
+	    if(!this.CombatHandler.isInCombat()) {
+		//initiate an attack on monster
+		var NPCList = this.TerrainHandler.getTerrain(this.Player.getPLocation().xCoor, this.Player.getPLocation().yCoor).
+		    getNPCList();
+		for(var i = 0; i < NPCList.length; i++) {
+		    if(NPCList[i].type == data.info.message.toLowerCase()) {
+			this.CombatHandler.init(this.Player, NPCList[i]);
+			break;
+		    }
+		}
+	    }
+	    return this.CombatHandler.combatPhase("attack");
+	    break;
+	case "flee":
+	    if(this.CombatHandler.isInCombat()) {
+		var monster = this.CombatHandler.getOpponent();
+		var chance = monster.getEscapeChance();
+		var roll = Math.floor(Math.random() * 100);
+
+		if(roll <= chance) {
+		    this.CombatHandler.reset();
+		    return "Successfully escaped combat!";
+		}
+		return "Failed to escape combat, the monster is angrier now!";
+	    }
+	    break;
+	case "shop":
+	    this.setCurrentMerchant();
+	    switch(data.info.message.toLowerCase()) {
+	    case "health":
+		this.HandlePurchase("Health Potion");
+		break;
+	    case "attack":
+		this.HandlePurchase("Attack Potion");
+		break;
+	    case "defense":
+		this.HandlePurchase("Defense Potion");
+		break;
+	    }
+	    break;
 	}//end switch 
     }
 
