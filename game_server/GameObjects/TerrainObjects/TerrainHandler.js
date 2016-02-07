@@ -121,6 +121,48 @@ function TerrainHandler() {
 	    }
 	}
     }
+
+
+    this.getSurroundingTerrains = function() {
+	var str = "";
+	if(this.isValidSlot(playerPos.x_coor - 1, playerPos.y_coor - 1) && this.exists(playerPos.x_coor - 1, playerPos.y_coor - 1)) {
+	    str += "To the NorthWest you have a " + this.getTerrain(playerPos.x_coor - 1, playerPos.y_coor - 1).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor, playerPos.y_coor - 1) && this.exists(playerPos.x_coor, playerPos.y_coor - 1)) {
+	    str += "To the North you have a " + this.getTerrain(playerPos.x_coor, playerPos.y_coor - 1).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor + 1, playerPos.y_coor - 1) && this.exists(playerPos.x_coor + 1, playerPos.y_coor - 1)) {
+	    str += "To the NorthEast you have a " + this.getTerrain(playerPos.x_coor + 1, playerPos.y_coor - 1).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor - 1, playerPos.y_coor) && this.exists(playerPos.x_coor - 1, playerPos.y_coor)) {
+	    str += "To the West you have a " + this.getTerrain(playerPos.x_coor - 1, playerPos.y_coor).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor, playerPos.y_coor) && this.exists(playerPos.x_coor, playerPos.y_coor)) {
+	    str += "Your standing on a " + this.getTerrain(playerPos.x_coor, playerPos.y_coor).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor + 1, playerPos.y_coor) && this.exists(playerPos.x_coor + 1, playerPos.y_coor)) {
+	    str += "To the East you have a " + this.getTerrain(playerPos.x_coor + 1, playerPos.y_coor).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor - 1, playerPos.y_coor + 1) && this.exists(playerPos.x_coor - 1, playerPos.y_coor + 1)) {
+	    str += "To the Southwest you have a " + this.getTerrain(playerPos.x_coor - 1, playerPos.y_coor + 1).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor, playerPos.y_coor + 1) && this.exists(playerPos.x_coor, playerPos.y_coor + 1)) {
+	    str += "To the South you have a " + this.getTerrain(playerPos.x_coor, playerPos.y_coor + 1).type + ". ";
+	}
+
+	if(this.isValidSlot(playerPos.x_coor + 1, playerPos.y_coor + 1) && this.exists(playerPos.x_coor + 1, playerPos.y_coor + 1)) {
+	    str += "To the Northeast you have a " + this.getTerrain(playerPos.x_coor + 1, playerPos.y_coor + 1).type + ". ";
+	}
+
+	return str;
+    }
     
     //returns the terrain at a given location
     this.getTerrain = function(x, y) {

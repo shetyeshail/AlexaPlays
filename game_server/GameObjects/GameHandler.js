@@ -74,9 +74,16 @@ function GameHandler() {
 	    break;
 	case "observe":
 	    if(data.info.message != null) {
-		this.TerrainHandler.getTerrain(this.Player.getPLocation().xCoor,
+		var NPCList = this.TerrainHandler.getTerrain(this.Player.getPLocation().xCoor,
 					       this.Player.getPLocation().yCoor).
 		    getNPCList();
+		for(var i = 0; i < NPCList.length; i++) {
+		    if(NPCList[i].type == data.info.message.toLowerCase()) {
+			return NPCList[i].description;
+		    }
+		}
+	    } else {
+		
 	    }
 	}//end switch 
     }
