@@ -27,7 +27,7 @@ function Player() {
         //init type things
         this.name = playerName;
         this.cNum = c;
-        switch(cNum) {      //Import class
+        switch(this.cNum) {      //Import class
             case 0:
                 this.pClass = require('./Executioner.js');
                 break;
@@ -50,24 +50,27 @@ function Player() {
         }
 
 	//set the initial/default stats
-	this.att = pClass.baseStats.att * this.statMultiplier;
-	this.hp = pClass.baseStats.hp * this.statMultiplier;
-	this.def = pClass.baseStats.def * this.statMultiplier;
-	this.agi = pClass.baseStats.agi * this.statMultiplier;
-	this.conf = pClass.baseStats.conf * this.statMultiplier;
+	this.att = this.pClass.baseStats.att * this.statMultiplier;
+	this.hp = this.pClass.baseStats.hp * this.statMultiplier;
+	this.def = this.pClass.baseStats.def * this.statMultiplier;
+	this.agi = this.pClass.baseStats.agi * this.statMultiplier;
+	this.conf = this.pClass.baseStats.conf * this.statMultiplier;
 
+	console.log(this.att, this.hp, this.def, this.agi, this.conf, "Woohoo");
+	
 	this.boostedAtt = this.att;
 	this.boostedDef = this.def;
 	
 	this.Inventory.init();
     }
 
-    this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS 
-        this.att = pClass.baseStats.att  * this.statMultiplier + mods.attack;
-        this.hp = pClass.baseStats.hp  * this.statMultiplier;
-        this.def = pClass.baseStats.def  * this.statMultiplier + mods.defense * this.statMultiplier;
-        this.agi = pClass.baseStats.agi * this.statMultiplier + mods.agility * this.statMultiplier;
-        this.conf = pClass.baseStats.conf * this.statMultiplier + mods.conf * this.statMultiplier;
+    this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS
+	console.log(mods.attack, mods.defense, mods.agility, mods.conf);
+        this.att = this.pClass.baseStats.att  * this.statMultiplier + mods.attack * this.statMultiplier;
+        this.hp = this.pClass.baseStats.hp  * this.statMultiplier;
+        this.def = this.pClass.baseStats.def  * this.statMultiplier + mods.defense * this.statMultiplier;
+        this.agi = this.pClass.baseStats.agi * this.statMultiplier + mods.agility * this.statMultiplier;
+        this.conf = this.pClass.baseStats.conf * this.statMultiplier + mods.conf * this.statMultiplier;
     }
 
     this.pLocation = {   //Location of player
@@ -106,7 +109,7 @@ function Player() {
 
     //Get class num
     this.getCNum = function() {
-        return cNum;
+        return this.cNum;
     }
 
     //get class
@@ -201,4 +204,22 @@ function Player() {
 	    this.potionTime = 10; //ten turns
 	}
     }
+
+    //for testing purposes
+    this.dumpInventory = function() {
+	this.Inventory.dump();
+    }
+
+    //for testing purposes
+    this.dumpPlayerInfo = function() {
+	console.log("Attack: " + this.att);
+	console.log("Defense: " + this.def);
+	console.log("Hitpoints: " + this.hp);
+	console.log("Agility: " + this.agi);
+	console.log("Confidence: " + this.conf);
+	console.log("Class/Classnum: " + this.cNum + "/" + this.pClass.name);
+    }
 }
+
+
+module.exports = new Player();

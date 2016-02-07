@@ -27,7 +27,7 @@ function TerrainHandler() {
 	    }
 	}
 
-	this.setLocalTerrians();
+	this.setLocalTerrains();
     }
 
     //keep track of player position 

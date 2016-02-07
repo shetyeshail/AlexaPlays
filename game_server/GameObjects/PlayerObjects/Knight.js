@@ -1,10 +1,12 @@
 
 function Knight() {
+    this.name = "Knight";
+    
     this.baseStats = {
-        att:  20
-        hp:   30
-        def:  30
-        agi:  10
+        att:  20,
+        hp:   30,
+        def:  30,
+        agi:  10,
         conf: 10
     }
 

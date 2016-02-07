@@ -26,7 +26,7 @@ function Inventory() {
     }
 
     this.remove = function(itemToRemove) {
-	if(typeof(this.itemList[]) == 'undefined' || this.itemList[itemToRemove] == null || this.itemList[itemToRemove] == 0) {
+	if(typeof(this.itemList) == 'undefined' || this.itemList[itemToRemove] == null || this.itemList[itemToRemove] == 0) {
 	   return false;
 	} else {
 	    this.itemList[itemToRemove]--;
@@ -63,6 +63,14 @@ function Inventory() {
 	    }
 	}
 	return null;
+    }
+
+    this.dump = function() {
+	var keys = Object.keys(this.itemList);
+	for(var i = 0; i < keys.length; i++) {
+	    console.log("Item: " + keys[i] + " -> " + this.itemList[keys[i]]);
+	}
+	console.log("Coins: " + this.coins);
     }
 }
 

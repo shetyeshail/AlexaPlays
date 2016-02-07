@@ -10,36 +10,44 @@ var Desert = function() {
     this.thirstDamage = 2;
     this.modifiers = [
 	{ //executioner
-	    "attack": -2
-
-      "agility": 0,
-      "attack": -2,
-      "conf": 0,
-      "defense": 0
+	    "attack": -2,
+	    "agility": 0,
+	    "conf": 0,
+	    "defense": 0
 	},
 	{ //knight
 	    "attack":  -2,
-	    "agility": -4
+	    "agility": -4,
+	    "conf": 0,
+	    "defense": 0,
 	},
 	{ //prince
 	    "attack": -2,
-	    "defence": -2
+	    "defense": -2,
+	    "agility": 0,
+	    "conf": 0
 	},
 	{ //princess
 	    "attack": -2,
-	    "defence": -2
+	    "defense": -2,
+	    "agility": 0,
+	    "conf": 0
 	},
 	{ //slave
 	    "agility": 3,
-	    "conf": 4
+	    "conf": 4,
+	    "attack": 0,
+	    "defense": 0
 	},
 	{ //thief
 	    "conf": 2,
-	    "attack": 2
+	    "attack": 2,
+	    "defense": 0,
+	    "agility": 0
 	}
     ];
-
-    /*//import the relevant NPC objects
+    
+    //import the relevant NPC objects
     var Tremor = require('../NPCObjects/Tremor.js');
     var Scorpion = require('../NPCObjects/Scorpion.js');
 
@@ -57,7 +65,7 @@ var Desert = function() {
 		this.NPCList.push(new Scorpion());
 	    }
 	}
-    }*/
+    }
 
     //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {

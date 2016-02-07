@@ -12,42 +12,42 @@ var Sea = function() {
 	    "attack": -2,
 	    "agility": -4,
 	    "conf": -5,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //knight
 	    "attack":  -2,
 	    "agility": -5,
 	    "conf": -5,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //prince
 	    "attack": -2,
 	    "agility": -2,
 	    "conf": -3,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //princess
 	    "attack": -2,
 	    "agility": -2,
 	    "conf": -3,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //slave
 	    "agility": -3,
 	    "attack": -2,
 	    "conf": -3,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //thief 
 	    "agility": -3,
 	    "attack": -2,
 	    "conf": -3,
-      "defense": 0
+	    "defense": 0
 	}
     ];
 
     //import the relevant NPC objects
-    /*var SeaDragon = require('../NPCObjects/SeaDragon.js');
+    var SeaDragon = require('../NPCObjects/SeaDragon.js');
 
 
     this.description = "A vast expanse of water. Rumors have spoken of the existence of a Sea Dragon. It's probably best for us to get out of here as soon as possible...";
@@ -61,7 +61,7 @@ var Sea = function() {
 		this.NPCList.push(new SeaDragon());
 	    }
 	}
-    }*/
+    }
 
     //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {

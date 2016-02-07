@@ -3,7 +3,7 @@
   Oracle NPC 
 */
 
-var TreeEnt = function() {
+var Oracle = function() {
     this.stats = {
 	"level": 7,
 	"att": 125,

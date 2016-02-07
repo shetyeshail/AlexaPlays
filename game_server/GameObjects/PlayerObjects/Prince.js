@@ -1,10 +1,12 @@
 
 function Prince() {
+    this.name = "Prince";
+    
     this.baseStats = {
-        att:  20
-        hp:   20
-        def:  10
-        agi:  20
+        att:  20,
+        hp:   20,
+        def:  10,
+        agi:  20,
         conf: 30
     }
 

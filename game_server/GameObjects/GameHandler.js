@@ -13,20 +13,20 @@ function GameHandler() {
     //initializes, well, everything; cNum is the given class number
     this.init = function(playerName, cNum) {
 	//Initialize player stats to the defaults 
-	Player.init(playerName, cNum);
+	this.Player.init(playerName, cNum);
+	//set the player position within the new game world (0,0 for default)
+	this.TerrainHandler.setPlayerPosition(
+	    this.Player.getPLocation().xCoor,
+	    this.Player.getPLocation().yCoor);
 	//create a new game world 
-	TerrainHandler.init();
-	//set the player position within the new game world (0,0 for default) 
-	TerrainHandler.setPlayerPosition(
-	    Player.getPLocation().xCoor,
-	    Player.getPLocation().yCoor);
+	this.TerrainHandler.init();
 	//calculate stat modifiers for the player based on the terrain 
-	var modifiers = TerrainHandler.getTerrain(
-	    Player.getPLocation().xCoor,
-	    Player.getPLocation().yCoor).getStatModifiers(
-		Player.getCNum());
+	var modifiers = this.TerrainHandler.getTerrain(
+	    this.Player.getPLocation().xCoor,
+	    this.Player.getPLocation().yCoor).getStatModifiers(
+		this.Player.getCNum());
 	//set the players new stats based on the terrain they're placed in
-	Player.updateStats(modifiers);
+	this.Player.updateStats(modifiers);
     }
 
     //decides what to do based on user voice input JSON data given by the Amazon Echo lambda function
@@ -68,7 +68,8 @@ function GameHandler() {
 	    }
 	}
     }
-    
+
+    //test that terrain stuff works lel
     this.terrainTest = function() {
 	for(var i = 0; i < 10; i++) {
 	    for(var j = 0; j < 10; j++) {
@@ -76,6 +77,12 @@ function GameHandler() {
 	    }
 	}
 	this.TerrainHandler.terrainDump();
+    }
+
+    //test that player-stuff works lul
+    this.playerTest = function() {
+	this.Player.dumpInventory();
+	this.Player.dumpPlayerInfo();
     }
 }
 

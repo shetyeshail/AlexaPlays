@@ -9,44 +9,44 @@ var Forest = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
-      "agility": 5,
-      "attack": 0,
-      "conf": 0,
-      "defense": 5
+	    "agility": 5,
+	    "attack": 0,
+	    "conf": 0,
+	    "defense": 5
 	},
 	{ //knight
-      "agility": -3,
-      "attack": 4,
-      "conf": 0,
-      "defense": 0
+	    "agility": -3,
+	    "attack": 4,
+	    "conf": 0,
+	    "defense": 0
 	},
 	{ //prince
-      "agility": -3,
-      "attack": 4,
-      "conf": 0,
-      "defense": 0
+	    "agility": -3,
+	    "attack": 4,
+	    "conf": 0,
+	    "defense": 0
 	},
 	{ //princess
-      "agility": 0,
-      "attack": 3,
-      "conf": 0,
-      "defense": -3
+	    "agility": 0,
+	    "attack": 3,
+	    "conf": 0,
+	    "defense": -3
 	},
 	{ //slave
-      "agility": 3,
-      "attack": -4,
-      "conf": -4,
-      "defense": 0
+	    "agility": 3,
+	    "attack": -4,
+	    "conf": -4,
+	    "defense": 0
 	},
 	{ //thief
-      "agility": 4,
-      "attack": -5,
-      "conf": 4,
-      "defense": 4
+	    "agility": 4,
+	    "attack": -5,
+	    "conf": 4,
+	    "defense": 4
 	}
     ];
-
-    /*//import the relevant NPC objects
+    
+    //import the relevant NPC objects
     var Oracle = require('../NPCObjects/Oracle.js');
     var TreeEnt = require('../NPCObjects/TreeEnt.js');
     var Spider = require('../NPCObjects/Spider.js');
@@ -66,7 +66,7 @@ var Forest = function() {
 		break;
 	    }
 	}
-    }*/
+    }
 
     //returns the specific modifiers for the supplied class
     this.getStatModifiers = function(playerClassNum) {

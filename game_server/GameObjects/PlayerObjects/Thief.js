@@ -1,10 +1,12 @@
 
 function Thief() {
+    this.name = "Theif";
+    
     this.baseStats = {
-        att:  10
-        hp:   20
-        def:  20
-        agi:  40
+        att:  10,
+        hp:   20,
+        def:  20,
+        agi:  40,
         conf: 10
     }
 

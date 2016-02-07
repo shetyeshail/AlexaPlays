@@ -9,42 +9,45 @@ var Town = function() {
     this.NPCList = []; //list of actual NPCs present in this terrain slot
     this.modifiers = [
 	{ //executioner
+	    "attack": 0,
+	    "defense": 0,
+	    "agility": 0,
+	    "conf": 0
 	},
 	{ //knight
 	    "attack":  3,
 	    "agility": 2,
-      "conf": 0,
+	    "conf": 0,
 	    "defense": 3
 	},
 	{ //prince
 	    "attack": 3,
-      "agility": 0,
+	    "agility": 0,
 	    "conf": 5,
 	    "defense": 5
 	},
 	{ //princess
 	    "attack": 3,
-      "agility": 0,
+	    "agility": 0,
 	    "conf": 5,
 	    "defense": 5
 	},
 	{ //slave
-      "attack": 0,
+	    "attack": 0,
 	    "agility": -5,
 	    "conf": -5,
-      "defense": 0
+	    "defense": 0
 	},
 	{ //thief
-      "attack": 0,
-      "agility": -3,
+	    "attack": 0,
+	    "agility": -3,
 	    "conf": -4,
-      "defense": 0
-
+	    "defense": 0
 	}
     ];
 
     //import the relevant NPC objects
-    var Merchant = require('../NPCObjects/Marchant.js');
+    var Merchant = require('../NPCObjects/Merchant.js');
     var Bandit = require('../NPCObjects/Bandit.js');
     var Villager = require('../NPCObjects/Villager.js');
 
