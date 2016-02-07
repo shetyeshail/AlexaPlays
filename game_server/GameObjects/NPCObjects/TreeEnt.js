@@ -22,6 +22,11 @@ var TreeEnt = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 50;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

@@ -22,6 +22,11 @@ var Scorpion = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 60;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

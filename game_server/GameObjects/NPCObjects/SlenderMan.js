@@ -27,6 +27,11 @@ var SlenderMan = function() {
     this.sanityDrain = function() {
 	this.sanity += Math.floor(Math.random() * 10);
     }
+
+    this.escapeChance = 60;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

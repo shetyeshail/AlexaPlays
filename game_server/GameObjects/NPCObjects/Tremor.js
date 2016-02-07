@@ -21,6 +21,11 @@ var Tremor = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 30;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 
