@@ -99,7 +99,14 @@ function GameHandler() {
 		    }
 		}
 	    }
-	    return this.CombatHandler.combatPhase("attack");
+	    var result = this.CombatHandler.combatPhase("attack");
+	    if(result.status == "you died") {
+		return "Oh dear, you are dead! Game over.";
+	    } else if(result.status == "opponent died") {
+		return "You have defeated the monster! Experience gained.";
+	    } else {
+		return result.combatDetails;
+	    }
 	    break;
 	case "flee":
 	    if(this.CombatHandler.isInCombat()) {
