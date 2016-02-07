@@ -21,6 +21,11 @@ var SeaDragon = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 10;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 module.exports = SeaDragon;

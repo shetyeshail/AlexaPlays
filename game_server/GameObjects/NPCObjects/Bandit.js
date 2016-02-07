@@ -21,6 +21,11 @@ var Bandit = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 7;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

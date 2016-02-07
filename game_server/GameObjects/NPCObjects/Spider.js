@@ -22,6 +22,11 @@ var Spider = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 90;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

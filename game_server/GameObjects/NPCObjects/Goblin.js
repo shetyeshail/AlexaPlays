@@ -21,6 +21,11 @@ var Goblin = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 40;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 

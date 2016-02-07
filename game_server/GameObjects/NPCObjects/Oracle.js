@@ -22,6 +22,11 @@ var Oracle = function() {
     this.getStats = function() {
 	return this.stats;
     }
+
+    this.escapeChance = 20;
+    this.getEscapeChance = function() {
+        return this.escapeChance;
+    }
 }
 
 
