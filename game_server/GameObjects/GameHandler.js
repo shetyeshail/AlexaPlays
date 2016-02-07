@@ -9,6 +9,7 @@ function GameHandler() {
     this.Player = require('./PlayerObjects/Player.js');
     this.CombatHandler = require('./CombatHandler.js');
     this.currentMerch;
+    this.fought = false;
     
     //initializes, well, everything; cNum is the given class number
     this.init = function(playerName, cNum) {
@@ -127,7 +128,8 @@ function GameHandler() {
 		break;
 	    }
 	    break;
-	}//end switch 
+	}//end switch
+					  
     }
 
     this.movePlayer = function(x, y) {
