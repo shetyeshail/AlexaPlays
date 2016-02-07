@@ -174,7 +174,10 @@ function Player() {
         this.conf = conf;
     }
 
-
+    this.getBoostedAtt = function() {
+	return this.boostedAtt;
+    }
+    
     this.pay = function(amount) {
 	return this.Inventory.spend(amount);
     }

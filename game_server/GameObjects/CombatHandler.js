@@ -16,22 +16,36 @@ function CombatHandler() {
 
     //goes through the actual combat - preference goes to the player
     this.combatPhase = function(details) {
+	var result = {};
 	var combatDetails = "";
 	if(details != null) {
 	    //you attacks opponent here
 	    combatDetails += "You swing your weapon at the enemy dealing ";
 	    //calculate damage
-
-	    combatDetails += damage + "! ";
+	    var youDamage = this.you.getBoostedAtt();
+	    this.opponent.stats.hp -= youDamage;
+	    if(this.opponent.stats.hp <= 0) {
+		result.status = "opponent died";
+		return result;
+	    }
+	    
+	    combatDetails += youDamage + "! ";
 	}
 
 	//opponent attacks you here -IF- it's not dead yet
 	combatDetails += "The " + this.opponent.type + " attacks you, dealing ";
 
 	//calculate damage here
+	var oDamage = this.opponent.stats.attack;
+	this.you.setHp(this.you.getHp() - oDamage);
+	if(this.you.getHp() <= 0) {
+	    result.status = "you died";
+	    return result;
+	}
+	
+	combatDetails += oDamage + "!";
 
-	combatDetails += damage + "!";
-
+	result.combatDetails = combatDetails;
 	return combatDetails;
     }
 
