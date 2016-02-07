@@ -161,8 +161,12 @@ function GameHandler() {
 	
 	for(var i = 0; i < itemList.length; i++) {
 	    if(itemList[i].name == itemToPurchase) {
-		this.Player.pay(itemList[i].cost);
+		var paid = this.Player.pay(itemList[i].cost);
+		if(!paid) {
+		    return "You don't have enough money to purchase that item!";
+		}
 		this.Player.acquire(itemList[i]);
+		return "Purchase successful!";
 	    }
 	}
     }

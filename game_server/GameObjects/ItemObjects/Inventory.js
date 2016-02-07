@@ -32,7 +32,11 @@ function Inventory() {
     }
 
     this.spend = function(amount) {
-	this.coins -= amount;
+	if(this.coins > amount) {
+	    this.coins -= amount;
+	    return true;
+	}
+	return false;
     }
 
     this.earn = function(amount) {

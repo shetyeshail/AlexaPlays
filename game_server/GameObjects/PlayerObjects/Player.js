@@ -176,7 +176,7 @@ function Player() {
 
 
     this.pay = function(amount) {
-	this.Inventory.spend(amount);
+	return this.Inventory.spend(amount);
     }
 
     this.acquire = function(item) {
