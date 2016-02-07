@@ -1,6 +1,6 @@
 
 /*
-  Spider NPC 
+  Spider NPC
 */
 
 var Spider = function() {
@@ -11,8 +11,8 @@ var Spider = function() {
 	"hp": 200,
 	"hostile": false
     };
-    this.type = "monster";
-    
+    this.type = "spider";
+
     this.description = "Just your typical, household spider... only one hundred times larger.";
 
     this.getDescription = function() {

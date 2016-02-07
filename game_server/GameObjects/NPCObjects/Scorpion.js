@@ -1,6 +1,6 @@
 
 /*
-  Scorpion NPC 
+  Scorpion NPC
 */
 
 var Scorpion = function() {
@@ -11,8 +11,8 @@ var Scorpion = function() {
 	"hp": 150,
 	"hostile": true
     };
-    this.type = "monster";
-    
+    this.type = "scorpion";
+
     this.description = "Just a mini-van sized scorpion - you know, nothing too crazy...";
 
     this.getDescription = function() {

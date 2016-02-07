@@ -1,6 +1,6 @@
 
 /*
-  Tremor NPC 
+  Tremor NPC
 */
 
 var Tremor = function() {
@@ -11,7 +11,7 @@ var Tremor = function() {
 	"hp": 350,
 	"hostile": true
     };
-    this.type = "monster";
+    this.type = "tremor";
     this.description = "Your worst nightmare. These suckers come out of the ground in unpredictable locations. You could be crushed at any moment...";
 
     this.getDescription = function() {
