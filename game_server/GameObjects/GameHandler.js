@@ -30,7 +30,55 @@ function GameHandler() {
 
     //decides what to do based on user voice input JSON data given by the Amazon Echo lambda function
     this.dispatch = function(data) {
+	/*data comes in the form
+	  {
+	     type: ???,
+	     info: ???
+	  }
+	*/
 
+	switch(data.type) {
+	case "move":
+	    var newX = this.Player.getPLocation().xCoor + data.info.x;
+	    var newY = this.Player.getPLocation().yCoor + data.info.y;
+	    if(this.TerrainHandler.setPlayerPosition(newX, newY)) {
+		this.Player.setPLocation(newX, newY);
+		var modifiers = this.TerrainHandler.getTerrain(
+		    newX, newY).getStatModifiers(
+			this.Player.getCNum());
+		this.Player.updateStats(modifiers);
+		return "You have moved; you are now located at " + newX + ", " + newY;
+	    }
+	    return "Couldn't move in that direction.";
+	    break;
+	case "inventory":
+	    if(data.info.message == "view") {
+		var inv = this.Player.getInventory();
+		return inv.toString();
+	    }
+	    break;
+	case "use":
+	    var response = "";
+	    switch(data.info.message) {
+	    case "Health Potion":
+		response = this.Player.usePotion("hp");
+		break;
+	    case "Attack Potion":
+		response = this.Player.usePotion("att");
+		break;
+	    case "Defense Potion":
+		response = this.Player.usePotion("def");
+		break;
+	    }
+	    return response;
+	    break;
+	case "observe":
+	    if(data.info.message != null) {
+		this.TerrainHandler.getTerrain(this.Player.getPLocation().xCoor,
+					       this.Player.getPLocation().yCoor).
+		    getNPCList();
+	    }
+	}//end switch 
     }
 
     this.movePlayer = function(x, y) {

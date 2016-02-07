@@ -185,9 +185,13 @@ function Player() {
     }
 
     this.usePotion = function(type) {
-	this.applyStatBoost(this.Inventory.use(type));
+	return this.applyStatBoost(this.Inventory.use(type));
     }
 
+    this.getInventory = function() {
+	return this.Inventory;
+    }
+    
     this.applyStatBoost = function(stats) {
 	if(stats == null) return;
 	if(this.hp + stats.hp > this.pClass.baseStats.hp) {
@@ -198,12 +202,13 @@ function Player() {
 	
 	this.boostedAtt = this.att + stats.att * this.statMultiplier;
 	this.boostedDef = this.def + stats.def * this.statMultiplier;
-
-	console.log(this.att + stats.att * this.statMultiplier);
+	
 	if(this.boostedAtt > this.att || this.boostedDef > this.def) {
 	    //if we've used anything other than a health potion we want to apply a time limit
 	    this.potionTime = 10; //ten turns
+	    return "Used potion - you have a boost for ten turns";
 	}
+	return "Used Health poition - healed 200 health!";
     }
 
     //for testing purposes

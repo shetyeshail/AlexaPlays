@@ -38,6 +38,37 @@ function Inventory() {
     this.earn = function(amount) {
 	this.coins += amount;
     }
+
+    //returns a strig representation of the inventory 
+    this.toString = function() {
+	var str = "You have ";
+	var pots = [0, 0, 0];  //health, att, def 
+	for(var i = 0; i < this.itemList.length; i++) {
+	    if(this.itemList[i].name == "Health Potion") {
+		pots[0]++;
+	    } else if(this.itemList[i].name == "Attack Potion") {
+		pots[1]++;
+	    } else {
+		//we are really making assumptions here that there are only three types of items in this world...
+		pots[2]++;
+	    }
+	}//end for
+	if(pots[0] > 0) {
+	    str += pots[0] + " Health Potions";
+	}
+
+	if(pots[1] > 0) {
+	    str += ", " + pots[1] + " Attack Potions";
+	}
+
+	if(pots[2] > 0) {
+	    str += ", and " + pots[i] + " Defense Potions";
+	}
+
+	str += " in your inventory.";
+
+	return str;
+    }
     
     this.use = function(type) {
 	var ret = null; 
