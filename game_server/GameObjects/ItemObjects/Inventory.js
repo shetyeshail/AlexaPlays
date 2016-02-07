@@ -6,15 +6,24 @@
 function Inventory() {
     this.itemList = [];
     this.coins;
+    this.Potion = require('./Potion.js');
     
     this.init = function() {
 	this.coins = 200;
-	var Potion = require('./Potion.js');
+	
 	//push several potions of health to get the player started
 	for(var i = 0; i < 3; i++) {
-	    this.itemList.push(new Potion().init('hp'));
+	    var pot = new this.Potion();
+	    pot.init("hp");
+
+	    if(typeof(this.itemList[pot]) == 'undefined') {
+		this.itemList[pot] = 1;
+	    } else {
+		this.itemList[pot]++;
+	    }
+	    
 	}
-	
+	console.log("Length: " + this.itemList.length);
     }
 
     this.add = function(newItem) {
@@ -44,6 +53,7 @@ function Inventory() {
     
     this.use = function(type) {
 	var keys = Object.keys(this.itemList);
+	
 	for(var i = 0; i < keys.length; i++) {
 	    if(type == 'hp' && this.itemList[keys[i]].stats.hp > 0) {
 		if(this.itemList[keys[i]] > 0) {
@@ -67,6 +77,7 @@ function Inventory() {
 
     this.dump = function() {
 	var keys = Object.keys(this.itemList);
+	console.log("Length still: " + this.itemList.length);
 	for(var i = 0; i < keys.length; i++) {
 	    console.log("Item: " + keys[i] + " -> " + this.itemList[keys[i]]);
 	}
