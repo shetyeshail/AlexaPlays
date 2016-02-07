@@ -1,6 +1,6 @@
 
 /*
-  Bandit NPC 
+  Bandit NPC
 */
 
 var Bandit = function() {
@@ -11,7 +11,7 @@ var Bandit = function() {
 	"hp": 200,
 	"hostile": false
     };
-    this.type = "monster";
+    this.type = "bandit";
     this.description = "Just a low-life. These types prefer to stay underground. They'll typically stay away unless you instigate a fight.";
 
     this.getDescription = function() {

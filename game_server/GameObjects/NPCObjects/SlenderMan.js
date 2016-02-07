@@ -1,6 +1,6 @@
 
 /*
-  SlenderMan NPC 
+  SlenderMan NPC
 */
 
 var SlenderMan = function() {
@@ -12,8 +12,8 @@ var SlenderMan = function() {
 	"hostile": true
     };
     this.sanity = 0;
-    this.type = "monster";
-    
+    this.type = "slenderman";
+
     this.description = "He's slender. And he's a man. And he's terrifying. Run away from these before you lose your sanity... and the game.";
 
     this.getDescription = function() {

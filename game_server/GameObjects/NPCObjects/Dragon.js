@@ -1,6 +1,6 @@
 
 /*
-  Dragon NPC 
+  Dragon NPC
 */
 
 var Dragon = function() {
@@ -11,8 +11,8 @@ var Dragon = function() {
 	"hp": 1000,
 	"hostile": true
     };
-    this.type = "monster";
-    
+    this.type = "dragon";
+
     this.description = "There is not much to say about this beast. It is simply the king of the land - unmatched in power and ferocity. It is thought to be the cousin of the dragon of the seas.";
 
     this.getDescription = function() {

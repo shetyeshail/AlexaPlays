@@ -6,12 +6,12 @@
 var Villager = function() {
     //to do
     //this.Quest = require('../QuestObjects/Quest.js');
-    
+
     this.name = "";
     this.hasQuest = false;
     this.type = "villager";
 
-    
+
     this.init = function() {
 	//set up the name
 	var n = Math.floor(Math.random() * 6);
