@@ -1,4 +1,3 @@
-
 /*
   GameHandler is the object that deals with all of the game handling - sets up interaction 
   between the user and game environment; as well as communicartion between other game objects.
@@ -48,22 +47,24 @@ function GameHandler() {
     
     //each town terrain will only have one merchant
     this.setCurrentMerchant = function() {
-	var npcList = this.TerrainHandler.getTerrain(this.Player.getPLocation.xCoor,
-						     this.Player.getPLocation.yCoor).getNPCList();
+	var npcList = this.TerrainHandler.getTerrain(this.Player.getPLocation().xCoor, this.Player.getPLocation().yCoor).getNPCList();
 	for(var i = 0; i < npcList.length; i++) {
 	    if(npcList[i].type == "merchant") {
 		this.currentMerch = npcList[i];
+		return true;
 	    }
 	}
+	return false;
     }
 
     //the entire procedure to purchase from a shop 
     this.handlePurchase = function(itemToPurchase) {
 	var Market = this.currentMerch.getMarket();
 	var itemList  = Market.getItemList();
+	
 	for(var i = 0; i < itemList.length; i++) {
-	    if(itemList[i].getName == itemToPurchase) {
-		this.Player.pay(itemList[i].getInfo().cost);
+	    if(itemList[i].name == itemToPurchase) {
+		this.Player.pay(itemList[i].cost);
 		this.Player.acquire(itemList[i]);
 	    }
 	}
@@ -81,7 +82,10 @@ function GameHandler() {
 
     //test that player-stuff works lul
     this.playerTest = function() {
-	this.Player.dumpInventory();
+	//this.Player.dumpInventory();
+	this.Player.dumpPlayerInfo();
+
+	this.Player.usePotion('att');
 	this.Player.dumpPlayerInfo();
     }
 }

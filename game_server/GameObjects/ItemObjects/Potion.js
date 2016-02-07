@@ -15,7 +15,7 @@ var Potion = function() {
     this.cost = 0;
     
     this.init = function(type) {
-	console.log("Type: " + type);
+	
 	switch(type) {
 	case "hp": this.stats.hp = 200;
 	    this.name = "Health Potion";

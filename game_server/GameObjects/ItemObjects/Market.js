@@ -27,12 +27,12 @@ var Market = function() {
     //adds a new item to the shop
     this.addItem = function(newItem) {
 	if(newItem == null) return false;
-	itemList.push(newItem);
+	this.itemList.push(newItem);
 	return true;
     }
 
     //returns the information of the item (cost, name, desc, stat boostss)
-    this.getItemInfo(itemName) {
+    this.getItemInfo = function(itemName) {
 	for(var i = 0; i < this.itemList.length; i++) {
 	    if(this.itemList[i].getName() == itemName) {
 		return this.itemList[i].getInfo();
@@ -46,6 +46,10 @@ var Market = function() {
 	for(var i = 0; i < this.itemList.length; i++) {
 	    console.log(this.itemList[i].getName());
 	}
+    }
+
+    this.getItemList = function() {
+	return this.itemList;
     }
 }
 

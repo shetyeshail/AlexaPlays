@@ -9,6 +9,8 @@ var Villager = function() {
     
     this.name = "";
     this.hasQuest = false;
+    this.type = "villager";
+
     
     this.init = function() {
 	//set up the name

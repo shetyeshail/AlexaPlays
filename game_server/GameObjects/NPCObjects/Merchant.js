@@ -4,9 +4,12 @@
 */
 
 var Merchant = function() {
-    //object to interact with the market 
-    this.Market = require('../ItemObjects/Market.js');
+    //object to interact with the market
+    this.marketImport = require('../ItemObjects/Market.js');
+    this.Market = new this.marketImport();
     this.name = "";
+    this.type = "merchant";
+
     
     this.init = function() {
 	//set up the name
@@ -25,7 +28,7 @@ var Merchant = function() {
 	case 5: this.name = "Harsh Patel";
 	}
 
-	
+	this.Market.init();
     }
 
     //a simple, humble greeting

@@ -49,22 +49,22 @@ function TerrainHandler() {
 	    var terrainSelector = Math.floor(Math.random() * 6);
 	    switch(terrainSelector) {
 	    case 0: this.grid[x][y] = new this.Forest();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
       	    case 1: this.grid[x][y] = new this.Cave();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
 	    case 2: this.grid[x][y] = new this.Town();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
 	    case 3: this.grid[x][y] = new this.Desert();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
 	    case 4: this.grid[x][y] = new this.Castle();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
 	    case 5: this.grid[x][y] = new this.Sea();
-		//this.grid[x][y].init();
+		this.grid[x][y].init();
 		break;
 	    }
 	}

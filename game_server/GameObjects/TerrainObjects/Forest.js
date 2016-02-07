@@ -60,9 +60,9 @@ var Forest = function() {
 	for(var i = 0; i < num_npcs; i++) {
 	    var type = Math.floor(Math.random() * 2);
 	    switch(type) {
-	    case 0: NPCList.push(new TreeEnt());
+	    case 0: this.NPCList.push(new TreeEnt());
 		break;
-	    case 1: NPCList.push(new Spider());
+	    case 1: this.NPCList.push(new Spider());
 		break;
 	    }
 	}

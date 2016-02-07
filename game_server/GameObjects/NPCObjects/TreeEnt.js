@@ -11,6 +11,7 @@ var TreeEnt = function() {
 	"hp": 500,
 	"hostile": false
     };
+    this.type = "monster";
     
     this.description = "These ancient species only attack if you hurt the wildlife. They are the guardians of these woods.";
 

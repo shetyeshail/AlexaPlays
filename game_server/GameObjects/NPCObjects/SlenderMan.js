@@ -12,6 +12,7 @@ var SlenderMan = function() {
 	"hostile": true
     };
     this.sanity = 0;
+    this.type = "monster";
     
     this.description = "He's slender. And he's a man. And he's terrifying. Run away from these before you lose your sanity... and the game.";
 

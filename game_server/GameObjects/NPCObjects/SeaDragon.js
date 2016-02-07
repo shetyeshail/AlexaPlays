@@ -11,7 +11,7 @@ var SeaDragon = function() {
   "hp": 750,
   "hostile": true
     };
-
+    this.type = "monster";
     this.description = "The ruler of the great seas, when you enter his domain there is no escape.";
 
     this.getDescription = function() {

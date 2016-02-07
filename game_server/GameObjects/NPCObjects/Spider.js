@@ -11,6 +11,7 @@ var Spider = function() {
 	"hp": 200,
 	"hostile": false
     };
+    this.type = "monster";
     
     this.description = "Just your typical, household spider... only one hundred times larger.";
 

@@ -11,6 +11,7 @@ var Oracle = function() {
 	"hp": 600,
 	"hostile": false
     };
+    this.type = "monster";
     
     this.description = "Thought to be the wisest being in the universe; is usually peaceful unless he senses evil in your heart.";
 

@@ -56,7 +56,7 @@ function Player() {
 	this.agi = this.pClass.baseStats.agi * this.statMultiplier;
 	this.conf = this.pClass.baseStats.conf * this.statMultiplier;
 
-	console.log(this.att, this.hp, this.def, this.agi, this.conf, "Woohoo");
+	//console.log(this.att, this.hp, this.def, this.agi, this.conf, "Woohoo");
 	
 	this.boostedAtt = this.att;
 	this.boostedDef = this.def;
@@ -65,7 +65,6 @@ function Player() {
     }
 
     this.updateStats = function(mods){ //NEED TO GET TERRAIN MODIFIERS
-	console.log(mods.attack, mods.defense, mods.agility, mods.conf);
         this.att = this.pClass.baseStats.att  * this.statMultiplier + mods.attack * this.statMultiplier;
         this.hp = this.pClass.baseStats.hp  * this.statMultiplier;
         this.def = this.pClass.baseStats.def  * this.statMultiplier + mods.defense * this.statMultiplier;
@@ -196,9 +195,11 @@ function Player() {
 	} else {
 	    this.hp = this.hp + (stats.hp * this.statMultiplier);
 	}
-
+	
 	this.boostedAtt = this.att + stats.att * this.statMultiplier;
 	this.boostedDef = this.def + stats.def * this.statMultiplier;
+
+	console.log(this.att + stats.att * this.statMultiplier);
 	if(this.boostedAtt > this.att || this.boostedDef > this.def) {
 	    //if we've used anything other than a health potion we want to apply a time limit
 	    this.potionTime = 10; //ten turns
@@ -217,6 +218,9 @@ function Player() {
 	console.log("Hitpoints: " + this.hp);
 	console.log("Agility: " + this.agi);
 	console.log("Confidence: " + this.conf);
+
+	console.log("Boosted attack: " + this.boostedAtt);
+	console.log("Boosted defense: " + this.boostedDef);
 	console.log("Class/Classnum: " + this.cNum + "/" + this.pClass.name);
     }
 }

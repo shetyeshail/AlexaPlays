@@ -11,7 +11,7 @@ var Goblin = function() {
 	"hp": 250,
 	"hostile": true
     };
-    
+    this.type = "monster";
     this.description = "A hunched-back foolish looking thing - ready to pull a prank or murder - either works!";
 
     this.getDescription = function() {

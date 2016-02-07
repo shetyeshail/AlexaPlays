@@ -16,31 +16,19 @@ function Inventory() {
 	    var pot = new this.Potion();
 	    pot.init("hp");
 
-	    if(typeof(this.itemList[pot]) == 'undefined') {
-		this.itemList[pot] = 1;
-	    } else {
-		this.itemList[pot]++;
-	    }
-	    
+	    this.itemList.push(pot);
 	}
-	console.log("Length: " + this.itemList.length);
     }
 
     this.add = function(newItem) {
-	if(typeof(this.itemList[newItem]) == 'undefined' || this.itemList[newItem] == null) {
-	    this.itemList[newItem] = 1;
-	} else {
-	    this.itemList[newItem]++;
-	}
+	if(newItem == null) return;
+	this.itemList.push(newItem);
     }
 
     this.remove = function(itemToRemove) {
-	if(typeof(this.itemList) == 'undefined' || this.itemList[itemToRemove] == null || this.itemList[itemToRemove] == 0) {
-	   return false;
-	} else {
-	    this.itemList[itemToRemove]--;
-	    return true;
-	}
+	if(itemToRemove == null || this.itemList.indexOf(itemToRemove) == -1) return;
+	var idx = this.itemList.indexOf(itemToRemove);
+	this.itemList.splice(idx, 1);
     }
 
     this.spend = function(amount) {
@@ -52,34 +40,26 @@ function Inventory() {
     }
     
     this.use = function(type) {
-	var keys = Object.keys(this.itemList);
-	
-	for(var i = 0; i < keys.length; i++) {
-	    if(type == 'hp' && this.itemList[keys[i]].stats.hp > 0) {
-		if(this.itemList[keys[i]] > 0) {
-		    this.itemList[keys[i]]--;
-		    return this.itemList[keys[i]].getStatBoost();
-		}
-	    } else if(type == 'att' && this.itemList[keys[i]].stats.att > 0) {
-		if(this.itemList[keys[i]] > 0) {
-		    this.itemList[keys[i]]--;
-		    return this.itemList[keys[i]].getStatBoost();
-		}
-	    } else if(type == 'def' && this.itemList[keys[i]].stats.def > 0) {
-		if(this.itemList[keys[i]] > 0) {
-		    this.itemList[keys[i]]--;
-		    return this.itemList[keys[i]].getStatBoost();
-		}
+	var ret = null; 
+	for(var i = 0; i < this.itemList.length; i++) {
+	    if(type == 'hp' && this.itemList[i].getStatBoost().hp > 0) {
+		ret = this.itemList[i].getStatBoost(); 
+		this.itemList.splice(i, 1);
+	    } else if(type == 'att' && this.itemList[i].getStatBoost().att > 0) {
+		ret = this.itemList[i].getStatBoost(); 
+		this.itemList.splice(i, 1);
+	    } else if(type == 'def' && this.itemList[i].getStatBoost().def > 0) {
+		ret = this.itemList[i].getStatBoost(); 
+		this.itemList.splice(i, 1);
 	    }
 	}
-	return null;
+	
+	return ret;
     }
 
     this.dump = function() {
-	var keys = Object.keys(this.itemList);
-	console.log("Length still: " + this.itemList.length);
-	for(var i = 0; i < keys.length; i++) {
-	    console.log("Item: " + keys[i] + " -> " + this.itemList[keys[i]]);
+	for(var i = 0; i < this.itemList.length; i++) {
+	    console.log(this.itemList[i].name);
 	}
 	console.log("Coins: " + this.coins);
     }

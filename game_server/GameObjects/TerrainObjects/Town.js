@@ -59,13 +59,16 @@ var Town = function() {
 	for(var i = 0; i < num_npcs; i++) {
 	    var type = Math.floor(Math.random() * 10);
 	    if(type < 6) {
-		this.NPCList.push(new Villager());
-	    } else if(type == 6) {
-		this.NPCList.push(new Merchant());
+		var tempVillager = new Villager();
+		tempVillager.init();
+		this.NPCList.push(tempVillager);
 	    } else {
 		this.NPCList.push(new Bandit());
 	    }
 	}
+	var tempMerch = new Merchant();
+	tempMerch.init();
+	this.NPCList.push(tempMerch);
     }
 
     //returns the specific modifiers for the supplied class
